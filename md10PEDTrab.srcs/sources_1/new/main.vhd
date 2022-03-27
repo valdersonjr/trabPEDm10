@@ -5,6 +5,7 @@ entity main is
     Port ( entradaA : in STD_LOGIC_VECTOR(3 downto 0);
            entradaB : in STD_LOGIC_VECTOR(3 downto 0);
            seletor: in STD_LOGIC;
+           an: out STD_LOGIC_VECTOR(3 downto 0);
            saidaA: out STD_LOGIC_VECTOR(6 downto 0));
 --           saidaB: out STD_LOGIC_VECTOR(6 downto 0));
 end main;
@@ -13,7 +14,12 @@ architecture Behavioral of main is
 
 signal entradaSelecionada: STD_LOGIC_VECTOR(3 downto 0);
 signal saidaDecodificada : STD_LOGIC_VECTOR(6 downto 0);
-signal seletorAux: STD_LOGIC;
+signal saidaSelecionada : STD_LOGIC_VECTOR(6 downto 0);
+signal an1 : STD_LOGIC_VECTOR(3 downto 0);
+
+
+signal unidadeDisplay: STD_LOGIC;
+signal dezenaDisplay: STD_LOGIC;
 
 component mux 
     Port ( entA : in STD_LOGIC_VECTOR(3 downto 0);
@@ -57,11 +63,13 @@ begin
         fo => saidaDecodificada(1),
         go => saidaDecodificada(0));
 
-    with seletor select
-        saidaA <= saidaDecodificada when '1',
-                  "0000000" when others;
-    
-    seletorAux <= not seletor;
-       
+
+        
+        with seletor select
+        an1 <=  "1110" when '0',
+                "1101" when others;
+                               
+        an <= an1;
+        saidaA <= saidaDecodificada;
         
 end Behavioral;

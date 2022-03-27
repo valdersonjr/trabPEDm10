@@ -15,8 +15,7 @@ begin
     
     with sel select
         saida <= entA when '1',
-                 entB when '0',
-                 "1110" when others;
+                 entB when others;
     
 
 end Behavioral;
