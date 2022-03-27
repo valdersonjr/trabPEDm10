@@ -1,0 +1,9 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../md10PEDTrab.srcs/sources_1/new/decodBCD7.vhd" \
+"../../../../md10PEDTrab.srcs/sources_1/new/main.vhd" \
+"../../../../md10PEDTrab.srcs/sources_1/new/mux.vhd" \
+"../../../../md10PEDTrab.srcs/sim_1/new/main_tb.vhd" \
+
+# Do not sort compile order
+nosort
